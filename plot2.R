@@ -32,12 +32,18 @@ usedata$mydate = strptime(paste(usedata$Date, ":", usedata$Time, sep =""),
 # convert the analysis variable to numeric
 usedata$Global_active_power <- as.numeric(usedata$Global_active_power)
 
+# Save plot as png
+png(filename = "plot2.png",
+    width = 480, height = 480, units = "px", pointsize = 12,
+    bg = "white")
+
+par(oma=c(2,2,2,0)); 
+
 # create the line plot
 with(usedata, plot(mydate, Global_active_power, type="n", 
-                   cex.lab = 0.8, cex.axis = 0.8,
+                   cex.lab = 0.9, cex.axis = 0.9,
                    xlab = "", ylab = "Global Active Power (killowatts)"))
 with(usedata, lines(mydate, Global_active_power))
 
-## Copy  plot to  PNG file
-dev.copy(png, file = "plot2.png",  width = 480, height = 480, units = "px")
+
 dev.off()

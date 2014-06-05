@@ -32,11 +32,18 @@ usedata$mydate = strptime(paste(usedata$Date, ":", usedata$Time, sep =""),
 # convert the analysis variable to numeric
 usedata$Global_active_power <- as.numeric(usedata$Global_active_power)
 
+
+# Save plot as png
+png(filename = "plot1.png",
+    width = 480, height = 480, units = "px", pointsize = 12,
+    bg = "white")
+
+par(oma=c(2,2,2,0)); 
+
 # plot histogram 
-hist(usedata$Global_active_power, cex.lab = 0.8, cex.axis = 0.8,
+hist(usedata$Global_active_power,
      xlab = "Global Active Power (killowatts)", 
      main = "Global Active Power", col = "red")
 
-## Copy  plot to  PNG file
-dev.copy(png, file = "plot1.png",  width = 480, height = 480, units = "px")
+
 dev.off()

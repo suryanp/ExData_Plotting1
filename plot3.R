@@ -34,17 +34,21 @@ usedata$Sub_metering_1 <- as.numeric(usedata$Sub_metering_1)
 usedata$Sub_metering_2 <- as.numeric(usedata$Sub_metering_2)
 usedata$Sub_metering_3 <- as.numeric(usedata$Sub_metering_3)
 
+# Save plot as png
+png(filename = "plot3.png",
+    width = 480, height = 480, units = "px", pointsize = 12,
+    bg = "white")
+
+par(oma=c(2,2,2,0)); 
 # create plots
 with(usedata, plot(mydate, Sub_metering_1, type="n", 
-                   cex.lab = 0.8, cex.axis = 0.8,
                    xlab = "", ylab = "Energy sub metering"))
 with(usedata, lines(mydate, Sub_metering_1))
 with(usedata, lines(mydate, Sub_metering_2, col = "Red"))
 with(usedata, lines(mydate, Sub_metering_3, col = "Blue"))
-legend("topright", cex = 0.55,
+legend("topright", cex = .9,
        c("Sub_metering_1","Sub_metering_2", "Sub_metering_3"),
        lty=c(1,1,1),col=c("black", "red", "blue")) 
 
-## Copy  plot to  PNG file
-dev.copy(png, file = "plot3.png",  width = 480, height = 480, units = "px")
+
 dev.off()

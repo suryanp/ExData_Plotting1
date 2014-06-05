@@ -37,41 +37,43 @@ usedata$Sub_metering_3 <- as.numeric(usedata$Sub_metering_3)
 usedata$Voltage <- as.numeric(usedata$Voltage)
 usedata$Global_reactive_power <- as.numeric(usedata$Global_reactive_power)
 
+# Save plot as png
+png(filename = "plot4.png",
+    width = 480, height = 480, units = "px", pointsize = 12,
+    bg = "white")
+
 
 # set parameter for 4 plots
 par(mfcol = c(2,2))
+par(mar=c(4,4,4,1));  
+par(oma=c(2,2,2,0));  
 
 # create first plot
-with(usedata, plot(mydate, Global_active_power, type="n", 
-                   cex.lab = 0.8, cex.axis = 0.8,
+with(usedata, plot(mydate, Global_active_power, type="n",cex.axis = 0.9, 
                    xlab = "", ylab = "Global Active Power"))
 with(usedata, lines(mydate, Global_active_power))
 
 # create second plot
-with(usedata, plot(mydate, Sub_metering_1, type="n", 
-                   cex.lab = 0.8, cex.axis = 0.8,
+with(usedata, plot(mydate, Sub_metering_1, type="n", cex.axis = 0.9,
                    xlab = "", ylab = "Energy sub metering"))
 with(usedata, lines(mydate, Sub_metering_1))
 with(usedata, lines(mydate, Sub_metering_2, col = "Red"))
 with(usedata, lines(mydate, Sub_metering_3, col = "Blue"))
-legend("topright", cex = 0.45, bty = "n", 
+legend("topright", bty = "n", cex = 0.9, 
        c("Sub_metering_1","Sub_metering_2", "Sub_metering_3"),
-       lty=c(1,1,1),col=c("black", "red", "blue")) 
+       lwd = c(1,1,1),col=c("black", "red", "blue")) 
 
 
 # create third plot
 
-with(usedata, plot(mydate, Voltage, type="n", 
-                   cex.lab = 0.8, cex.axis = 0.8,
+with(usedata, plot(mydate, Voltage, type="n", cex.axis = 0.9,
                    xlab = "datetime", ylab = "Voltage"))
 with(usedata, lines(mydate, Voltage))
 
 # Create 4th plot
-with(usedata, plot(mydate, Global_reactive_power, type="n", 
-                   cex.lab = 0.8, cex.axis = 0.8,
+with(usedata, plot(mydate, Global_reactive_power, type="n", cex.axis = 0.9,
                    xlab = "datetime", ylab = "Global_reactive_power"))
 with(usedata, lines(mydate, Global_reactive_power))
 
-## Copy  plot to  PNG file
-dev.copy(png, file = "plot4.png",  width = 480, height = 480, units = "px")
+
 dev.off()
