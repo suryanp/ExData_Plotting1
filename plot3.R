@@ -41,9 +41,8 @@ png(filename = "plot3.png",
 
 par(oma=c(2,2,2,0)); 
 # create plots
-with(usedata, plot(mydate, Sub_metering_1, type="n", 
+with(usedata, plot(mydate, Sub_metering_1, type="l", 
                    xlab = "", ylab = "Energy sub metering"))
-with(usedata, lines(mydate, Sub_metering_1))
 with(usedata, lines(mydate, Sub_metering_2, col = "Red"))
 with(usedata, lines(mydate, Sub_metering_3, col = "Blue"))
 legend("topright", cex = .9,

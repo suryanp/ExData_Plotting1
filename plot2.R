@@ -40,10 +40,10 @@ png(filename = "plot2.png",
 par(oma=c(2,2,2,0)); 
 
 # create the line plot
-with(usedata, plot(mydate, Global_active_power, type="n", 
+with(usedata, plot(mydate, Global_active_power, type="l", 
                    cex.lab = 0.9, cex.axis = 0.9,
                    xlab = "", ylab = "Global Active Power (killowatts)"))
-with(usedata, lines(mydate, Global_active_power))
+
 
 
 dev.off()

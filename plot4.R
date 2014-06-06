@@ -49,14 +49,12 @@ par(mar=c(4,4,4,1));
 par(oma=c(2,2,2,0));  
 
 # create first plot
-with(usedata, plot(mydate, Global_active_power, type="n",cex.axis = 0.9, 
+with(usedata, plot(mydate, Global_active_power, type="l",cex.axis = 0.9, 
                    xlab = "", ylab = "Global Active Power"))
-with(usedata, lines(mydate, Global_active_power))
 
 # create second plot
-with(usedata, plot(mydate, Sub_metering_1, type="n", cex.axis = 0.9,
+with(usedata, plot(mydate, Sub_metering_1, type="l", cex.axis = 0.9,
                    xlab = "", ylab = "Energy sub metering"))
-with(usedata, lines(mydate, Sub_metering_1))
 with(usedata, lines(mydate, Sub_metering_2, col = "Red"))
 with(usedata, lines(mydate, Sub_metering_3, col = "Blue"))
 legend("topright", bty = "n", cex = 0.9, 
@@ -66,14 +64,12 @@ legend("topright", bty = "n", cex = 0.9,
 
 # create third plot
 
-with(usedata, plot(mydate, Voltage, type="n", cex.axis = 0.9,
+with(usedata, plot(mydate, Voltage, type="l", cex.axis = 0.9,
                    xlab = "datetime", ylab = "Voltage"))
-with(usedata, lines(mydate, Voltage))
 
 # Create 4th plot
-with(usedata, plot(mydate, Global_reactive_power, type="n", cex.axis = 0.9,
+with(usedata, plot(mydate, Global_reactive_power, type="l", cex.axis = 0.9,
                    xlab = "datetime", ylab = "Global_reactive_power"))
-with(usedata, lines(mydate, Global_reactive_power))
 
 
 dev.off()
